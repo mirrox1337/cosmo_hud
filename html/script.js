@@ -62,7 +62,16 @@ $(document).ready(function () {
     easing: "easeInOut",
   });
 
-  FuelIndicator = new ProgressBar.Circle("#FuelCircle", {
+  FuelIndicator = new ProgressBar.Circle("#FuelCircle", { 
+    color: "rgba(222, 222, 222, 1)",
+    trailColor: "rgba(184, 184, 184, 0.082)",
+    strokeWidth: 8,
+    duration: 2000,
+    trailWidth: 8,
+    easing: "easeInOut",
+  });
+
+  NitrousIndicator = new ProgressBar.Circle("#NitrousCircle", { 
     color: "rgba(222, 222, 222, 1)",
     trailColor: "rgba(184, 184, 184, 0.082)",
     strokeWidth: 8,
@@ -97,13 +106,13 @@ window.addEventListener("message", function (event) {
   // Get current voice level and animate path
   if (data.action == "voice_level") {
     switch (data.voicelevel) {
-      case 1:
+      case 1.0:
         data.voicelevel = 33;
         break;
-      case 2:
+      case 2.3:
         data.voicelevel = 66;
         break;
-      case 3:
+      case 5.0:
         data.voicelevel = 100;
         break;
       default:
@@ -205,6 +214,15 @@ window.addEventListener("message", function (event) {
     }
   }
 
+  if (data.action == "update_nitrous") {
+    if (data.nitrous == true) {
+      NitrousIndicator.animate(100 / 100);
+      NitrousIndicator.path.setAttribute("stroke", "white");
+    } else if (data.nitrous == false) {
+      NitrousIndicator.animate(0);
+    }
+  }
+
   if (data.showSpeedo == true) {
     $("#VehicleContainer").fadeIn();
   } else if (data.showSpeedo == false) {
@@ -215,6 +233,12 @@ window.addEventListener("message", function (event) {
     $("#FuelCircle").show();
   } else if (data.showFuel == false) {
     $("#FuelCircle").hide();
+  }
+
+  if (data.showNitrous == true) {
+    $("#NitrousCircle").show();
+  } else if (data.showNitrous == false) {
+    $("#NitrousCircle").hide();
   }
 
   if (data.showUi == true) {

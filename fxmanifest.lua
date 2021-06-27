@@ -10,10 +10,21 @@ files {
     'html/script.js',
     'html/style.css',
     'html/loading-bar.js',
+    'html/nitrous.png',
+    'html/buckle.ogg',
+    'html/unbuckle.ogg'
 }
 
 
 client_scripts {
-    'client.lua',
-    'config.lua'
+    'config.lua',
+    'client/client.lua',
+    'client/stress.lua',
+    'client/cruisecontrol.lua',
+    'client/seatbelt.lua'
+}
+
+server_scripts {
+    'config.lua',
+    'server/server.lua'
 }
