@@ -1,4 +1,4 @@
-SetFlyThroughWindscreenParams(Config.ejectVelocity, Config.unknownEjectVelocity, Config.unknownModifier, Config.minDamage);
+
 local seatbeltOn = false
 
 Citizen.CreateThread(function()
@@ -11,29 +11,58 @@ Citizen.CreateThread(function()
             seatbeltOn = false
             Citizen.Wait(1000)
         end
+        if Config.ShowBelt == true then
+            if seatbeltOn then
+                SendNUIMessage({showBelt = false})
+            else
+                SendNUIMessage({showBelt = true})
+            end
+        elseif Config.ShowBelt == false then
+            SendNUIMessage({showBelt = false})
+        end
     end
 end)
 
 function toggleSeatbelt(makeSound, toggle)
     if toggle == nil then
         if seatbeltOn then
-            QBCore.Functions.Notify('Unbuckled', 'error')
-            playSound("unbuckle")
+            TriggerServerEvent("InteractSound_SV:PlayOnSource", "unbuckle", 0.25)
+            QBCore.Functions.Progressbar("harness_equip", "Removes the Seatbelt..", 1500, false, true, {
+                disableMovement = false,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            }, {}, {}, {}, function()end)
             SetFlyThroughWindscreenParams(Config.ejectVelocity, Config.unknownEjectVelocity, Config.unknownModifier, Config.minDamage)
         else
-            QBCore.Functions.Notify('Buckled', 'success')
-            playSound("buckle")
+            TriggerServerEvent("InteractSound_SV:PlayOnSource", "buckle", 0.25)
+            QBCore.Functions.Progressbar("harness_equip", "Putting on Seatbelt..", 1500, false, true, {
+                disableMovement = false,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            }, {}, {}, {}, function()end)
             SetFlyThroughWindscreenParams(10000.0, 10000.0, 17.0, 500.0);
         end
         seatbeltOn = not seatbeltOn
     else
         if toggle then
-            QBCore.Functions.Notify('Buckled', 'success')
-            playSound("buckle")
+            TriggerServerEvent("InteractSound_SV:PlayOnSource", "buckle", 0.25)
+            QBCore.Functions.Progressbar("harness_equip", "Putting on Seatbelt..", 1500, false, true, {
+                disableMovement = false,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            }, {}, {}, {}, function()end)
             SetFlyThroughWindscreenParams(10000.0, 10000.0, 17.0, 500.0);
         else
-            QBCore.Functions.Notify('Unbuckled', 'error')
-            playSound("unbuckle")
+            TriggerServerEvent("InteractSound_SV:PlayOnSource", "unbuckle", 0.25)
+            QBCore.Functions.Progressbar("harness_equip", "Removes the Seatbelt..", 1500, false, true, {
+                disableMovement = false,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            }, {}, {}, {}, function()end)
             SetFlyThroughWindscreenParams(Config.ejectVelocity, Config.unknownEjectVelocity, Config.unknownModifier, Config.minDamage)
         end
         seatbeltOn = toggle
@@ -68,6 +97,10 @@ RegisterCommand('toggleseatbelt', function(source, args, rawCommand)
     end
 end, false)
 
+
+
 exports("status", function() return seatbeltOn end)
 
 RegisterKeyMapping('toggleseatbelt', 'Toggle Seatbelt', 'keyboard', 'B')
+
+--Edited By MirroxTV

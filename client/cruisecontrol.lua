@@ -15,11 +15,11 @@ function TriggerCruiseControl ()
   if CruisedSpeed == 0 and IsDriving() then
     if GetVehiculeSpeed() > 0 and GetVehicleCurrentGear(GetVehicle()) > 0  then
       CruisedSpeed = GetVehiculeSpeed()
-      CruisedSpeedMph = TransformToMph(CruisedSpeed) -- Comment me for km/h
-      --CruisedSpeedKm = TransformToKm(CruisedSpeed) -- Uncomment me for km/h
+      --CruisedSpeedMph = TransformToMph(CruisedSpeed) -- Comment me for km/h
+      CruisedSpeedKm = TransformToKm(CruisedSpeed) -- Uncomment me for km/h
 
-      QBCore.Functions.Notify("Cruise Activated: " .. CruisedSpeedMph ..  " MP/H") -- Comment me for km/h
-      --QBCore.Functions.Notify("Cruise Activated: " .. CruisedSpeedKm ..  " km/h") -- Uncomment me for km/h
+      --QBCore.Functions.Notify("Cruise Activated: " .. CruisedSpeedMph ..  " MP/H") -- Comment me for km/h
+      QBCore.Functions.Notify("Cruise Activated: " .. CruisedSpeedKm ..  " km/h") -- Uncomment me for km/h
 
       Citizen.CreateThread(function ()
         while CruisedSpeed > 0 and IsInVehicle() == Player do

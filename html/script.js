@@ -54,17 +54,17 @@ $(document).ready(function () {
   });
 
   Speedometer = new ProgressBar.Circle("#SpeedCircle", {
-    color: "rgba(222, 222, 222, 1)",
-    trailColor: "rgba(184, 184, 184, 0.082)",
-    strokeWidth: 6,
+    color: "rgba(70, 104, 135, 1)",
+    trailColor: "#404b58",
+    strokeWidth: 8,
     duration: 100,
-    trailWidth: 6,
+    trailWidth: 8,
     easing: "easeInOut",
   });
 
   FuelIndicator = new ProgressBar.Circle("#FuelCircle", { 
-    color: "rgba(222, 222, 222, 1)",
-    trailColor: "rgba(184, 184, 184, 0.082)",
+    color: "rgba(70, 104, 135, 1)",
+    trailColor: "#404b58",
     strokeWidth: 8,
     duration: 2000,
     trailWidth: 8,
@@ -72,8 +72,17 @@ $(document).ready(function () {
   });
 
   NitrousIndicator = new ProgressBar.Circle("#NitrousCircle", { 
-    color: "rgba(222, 222, 222, 1)",
-    trailColor: "rgba(184, 184, 184, 0.082)",
+    color: "rgba(70, 104, 135, 1)",
+    trailColor: "#404b58",
+    strokeWidth: 8,
+    duration: 2000,
+    trailWidth: 8,
+    easing: "easeInOut",
+  });
+
+  BeltIndicator = new ProgressBar.Circle("#BeltCircle", { 
+    color: "rgba(70, 104, 135, 1)",
+    trailColor: "#404b58",
     strokeWidth: 8,
     duration: 2000,
     trailWidth: 8,
@@ -83,8 +92,8 @@ $(document).ready(function () {
   VoiceIndicator = new ProgressBar.Circle("#VoiceIndicator", {
     color: "#4a4a4a",
     trailColor: "#4a4a4a",
-    strokeWidth: 12,
-    trailWidth: 12,
+    strokeWidth: 10,
+    trailWidth: 10,
     duration: 250,
     easing: "easeInOut",
   });
@@ -106,13 +115,13 @@ window.addEventListener("message", function (event) {
   // Get current voice level and animate path
   if (data.action == "voice_level") {
     switch (data.voicelevel) {
-      case 1.0:
+      case 1:
         data.voicelevel = 33;
         break;
-      case 2.3:
+      case 2:
         data.voicelevel = 66;
         break;
-      case 5.0:
+      case 5:
         data.voicelevel = 100;
         break;
       default:
@@ -124,9 +133,9 @@ window.addEventListener("message", function (event) {
 
   // Light up path if talking
   if (data.talking == 1) {
-    VoiceIndicator.path.setAttribute("stroke", "white");
+    VoiceIndicator.path.setAttribute("stroke", "yellow");
   } else if (data.talking == false) {
-    VoiceIndicator.path.setAttribute("stroke", "darkgrey");
+    VoiceIndicator.path.setAttribute("stroke", "white");
   }
 
   // Headset icon if using radio
@@ -189,16 +198,27 @@ window.addEventListener("message", function (event) {
     $("#HungerIcon").toggleClass("flash");
   }
 
-  if (data.speed > 0) {
+  if (data.rpm > 0) {
     $("#SpeedIndicator").text(data.speed);
-    let multiplier = data.maxspeed * 0.1;
-    let SpeedoLimit = data.maxspeed + multiplier;
-    Speedometer.animate(data.speed / SpeedoLimit);
-    Speedometer.path.setAttribute("stroke", "white");
-  } else if (data.speed == 0) {
-    $("#SpeedIndicator").text("0");
-    Speedometer.path.setAttribute("stroke", "none");
+    let SpeedoLimit = data.maxspeed;
+    var rpm = data.rpm;
+
+    if (rpm > SpeedoLimit) {
+      rpm = SpeedoLimit;
+    }
+
+    Speedometer.animate(rpm / SpeedoLimit);
+      Speedometer.path.setAttribute("stroke", "white");
+    if (data.rpm > 95) {
+      Speedometer.path.setAttribute("stroke", "red");
+    } else if (data.rpm > 85) {
+      Speedometer.path.setAttribute("stroke", "yellow");
+    } else if (data.rpm == 0) {
+      $("#SpeedIndicator").text("0");
+      Speedometer.path.setAttribute("stroke", "none");
+    }
   }
+
 
   if (data.action == "update_fuel") {
     let finalfuel = (data.fuel / 100) * 1.5385;
@@ -215,11 +235,17 @@ window.addEventListener("message", function (event) {
   }
 
   if (data.action == "update_nitrous") {
-    if (data.nitrous == true) {
-      NitrousIndicator.animate(100 / 100);
-      NitrousIndicator.path.setAttribute("stroke", "white");
-    } else if (data.nitrous == false) {
+    if (data.nitrous > 0) {
+      $("#NitrousCircle").fadeIn();
+      NitrousIndicator.animate(data.nitrous / 100);
+    }
+    else {
+      $("#NitrousCircle").fadeOut();
       NitrousIndicator.animate(0);
+    } if (data.nitrous < 20) {
+      NitrousIndicator.path.setAttribute("stroke", "red");
+    } else {
+      NitrousIndicator.path.setAttribute("stroke", "white");
     }
   }
 
@@ -239,6 +265,13 @@ window.addEventListener("message", function (event) {
     $("#NitrousCircle").show();
   } else if (data.showNitrous == false) {
     $("#NitrousCircle").hide();
+  }
+
+  if (data.showBelt == true) {
+    $("#BeltCircle").fadeIn();
+    BeltIndicator.trail.setAttribute("stroke", "red");
+  } else if (data.showBelt == false) {
+    $("#BeltCircle").fadeOut();
   }
 
   if (data.showUi == true) {

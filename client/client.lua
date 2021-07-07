@@ -1,9 +1,11 @@
 local isDriving = false
-local isLoggedIn = false
+local isLoggedIn = true
 local nitrous = 0
+local hasNitrous = false
+local Stress = 0
 local hunger = nil
 local thirst = nil
-local oxygen = 0
+local seatbeltOn = false
 
 QBCore = nil
 Citizen.CreateThread(function()
@@ -23,9 +25,15 @@ AddEventHandler("QBCore:Client:OnPlayerUnload", function()
     isLoggedIn = false
 end)
 
-RegisterNetEvent('cosmo_hud:client:UpdateNitrous')
-AddEventHandler('cosmo_hud:client:UpdateNitrous', function(hasNitrous)
-    nitrous = hasNitrous
+RegisterNetEvent('hud:client:UpdateStress')
+AddEventHandler('hud:client:UpdateStress', function(newStress)
+    Stress = newStress
+end)
+
+RegisterNetEvent('qb-hud:client:UpdateNitrous')
+AddEventHandler('qb-hud:client:UpdateNitrous', function(hasNitrous, level)
+    hasNitrous = hasNitrous
+    nitrous = level
 end)
 
 RegisterNetEvent("hud:client:UpdateNeeds")
@@ -46,9 +54,10 @@ Citizen.CreateThread(function()
             if isDriving and IsPedInAnyVehicle(PlayerPedId(), true) then
                 local veh = GetVehiclePedIsUsing(PlayerPedId(), false)
                 local speed = math.floor(GetEntitySpeed(veh) * SpeedMultiplier)
+                local rpm = GetVehicleCurrentRpm(veh) * 100
                 local vehhash = GetEntityModel(veh)
-                local maxspeed = GetVehicleModelMaxSpeed(vehhash) * 3.6
-                SendNUIMessage({speed = speed, maxspeed = maxspeed})
+                local maxspeed = 100
+                SendNUIMessage({speed = speed, maxspeed = maxspeed, rpm = rpm})
             end
         end
     end
@@ -105,7 +114,7 @@ Citizen.CreateThread(function()
                 end
 
                 -- Voice
-                local voicedata = LocalPlayer.state["proximity"].distance
+                local voicedata = LocalPlayer.state["proximity"]
                 SendNUIMessage({action = "voice_level", voicelevel = voicedata})
 
                 SendNUIMessage({
@@ -190,7 +199,7 @@ CreateThread(function()
         if Config.ShowFuel == true then
             if isDriving and IsPedInAnyVehicle(player, true) then
                 local veh = GetVehiclePedIsUsing(player, false)
-                local fuellevel = GetVehicleFuelLevel(veh)
+                local fuellevel = exports["LegacyFuel"]:GetFuel(veh)
                 SendNUIMessage({
                     action = "update_fuel",
                     fuel = fuellevel,
@@ -204,11 +213,17 @@ CreateThread(function()
         -- Nitrous
         if Config.ShowNitrous == true then
             if isDriving and IsPedInAnyVehicle(player, true) then
-                if nitrous ~= 0 then
+                if nitrous ~= nil and nitrous > 0 then
                     SendNUIMessage({
                         action = "update_nitrous",
                         nitrous = nitrous,
                         showNitrous = true
+                    })
+                else
+                    SendNUIMessage({
+                        action = "update_nitrous",
+                        nitrous = 0,
+                        showNitrous = false
                     })
                 end
             end
@@ -221,3 +236,25 @@ end)
 RegisterCommand("togglehud",
     function()  SendNUIMessage({action = "toggle_hud"})
 end, false)
+
+playerAiming = false
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(200)
+		local ped = PlayerPedId()
+        if IsAimCamActive(PlayerPedId(), true) then
+			if playerAiming == false then
+            ShakeGameplayCam("HAND_SHAKE", 1.0 + Stress * 0.01)
+			SetPedAccuracy(ped, 0)
+			EnableLaserSightRendering(true)
+			playerAiming = true
+		end
+        else
+			if playerAiming == true then
+            StopGameplayCamShaking(true)
+			playerAiming = false
+			end
+        end
+    end
+end)

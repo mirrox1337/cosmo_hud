@@ -22,7 +22,7 @@ body {
   float: left;
   margin: 0.3vh;
   border-radius: 50%;
-  background: rgb(49, 49, 49);
+  background: #181E25;
 }
 
 .fa-heart,
@@ -75,7 +75,7 @@ body {
   font-size: 5vh;
   left: 22.8vh;
   bottom: 5.6vh;
-  background: rgba(27, 27, 27, 0.336);
+  background: rgba(24, 30, 37, 1.0);
   transform: rotate(-180deg);
 }
 
@@ -97,16 +97,26 @@ body {
   position: absolute;
   left: 20.4vh;
   bottom: 4.2vh;
-  background: rgba(27, 27, 27, 0.336);
+  background: rgba(24, 30, 37, 1.0);
   transform: rotate(-180deg);
 }
 #NitrousCircle {
   width: 3vh !important;
   height: 3vh !important;
   position: absolute;
+  left: 27.2vh;
+  bottom: 4.2vh;
+  background: rgba(24, 30, 37, 1.0);
+  transform: rotate(-180deg);
+}
+
+#BeltCircle {
+  width: 3vh !important;
+  height: 3vh !important;
+  position: absolute;
   left: 24.4vh;
   bottom: 11vh;
-  background: rgba(27, 27, 27, 0.336);
+  background: rgba(24, 30, 37, 1.0);
   transform: rotate(-180deg);
 }
 
@@ -116,6 +126,16 @@ body {
   bottom: 0.7vh;
   height: 18px;
   width: 18px;
+  position: inherit;
+  transform: rotate(-180deg);
+}
+
+.belt {
+  color: white;
+  left: 0.6vh;
+  bottom: 0.7vh;
+  height: 22px;
+  width: 22px;
   position: inherit;
   transform: rotate(-180deg);
 }

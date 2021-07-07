@@ -19,7 +19,7 @@ Citizen.CreateThread(function()
             if IsPedInAnyVehicle(ped, false) then
                 speed = GetEntitySpeed(GetVehiclePedIsIn(ped, false)) * 2.237 --mph
                 if speed >= Config.MinimumSpeed then
-                    TriggerServerEvent('qb-hud:Server:GainStress', math.random(2, 4))
+                    TriggerServerEvent('cosmo_hud:Server:GainStress', math.random(2, 4))
                 end
             end
         end
@@ -32,8 +32,8 @@ Citizen.CreateThread(function()
         if not IsGaining then
             StressGain = math.ceil(StressGain)
             if StressGain > 0 then
-                QBCore.Functions.Notify('Getting Stressed', "error", 2000)
-                TriggerServerEvent('qb-hud:Server:UpdateStress', StressGain)
+               -- QBCore.Functions.Notify('Stress Ökad', "error", 2000)
+                TriggerServerEvent('cosmo_hud:Server:UpdateStress', StressGain)
                 StressGain = 0
             end
         end

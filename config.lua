@@ -4,12 +4,13 @@ Config.AlwaysShowRadar = false -- set to true if you always want the radar to sh
 Config.ShowStress = true -- set to true if you want a stress indicator
 Config.ShowSpeedo = true -- set to true if you want speedometer enabled
 Config.ShowVoice = true -- set to false if you want to hide mic indicator
-Config.UnitOfSpeed = "mph"  -- "kmh" or "mph"
+Config.UnitOfSpeed = "kmh"  -- "kmh" or "mph"
 Config.UseRadio = true -- Shows headset icon instead of microphone if radio is on - REQUIRES "rp-radio"
 Config.ShowFuel = true -- Show fuel indicator
 Config.ShowNitrous = true -- Show nitrous level
+Config.ShowBelt = true
 Config.MinimumStress = 50 -- Change minimum stress amount to shake screen
-Config.MinimumSpeed = 250 -- Change minimum speed that causes stress
+Config.MinimumSpeed = 160 -- Change minimum speed that causes stress
 
 Config.Intensity = { -- Change Screen Shake Intensity Relative To Stress Amount
     ["shake"] = {
@@ -101,4 +102,4 @@ Config.passengerVolume = 0.20 -- 0.0 - 1.0
 --  playSoundForPassengers
 --      true = Play for everyone in the car
 --      false = Play only for the person who triggers it
-Config.playSoundForPassengers = true
+Config.playSoundForPassengers = true 

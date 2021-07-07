@@ -28,8 +28,8 @@ end
 
 local ResetStress = false
 
-RegisterServerEvent("qb-hud:Server:UpdateStress")
-AddEventHandler('qb-hud:Server:UpdateStress', function(StressGain)
+RegisterServerEvent("cosmo_hud:Server:UpdateStress")
+AddEventHandler('cosmo_hud:Server:UpdateStress', function(StressGain)
 	local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local newStress
@@ -50,8 +50,8 @@ AddEventHandler('qb-hud:Server:UpdateStress', function(StressGain)
 	end
 end)
 
-RegisterServerEvent('qb-hud:Server:GainStress')
-AddEventHandler('qb-hud:Server:GainStress', function(amount)
+RegisterServerEvent('cosmo_hud:Server:GainStress')
+AddEventHandler('cosmo_hud:Server:GainStress', function(amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local newStress
@@ -69,7 +69,7 @@ AddEventHandler('qb-hud:Server:GainStress', function(amount)
             newStress = 100
         end
         Player.Functions.SetMetaData("stress", newStress)
-        TriggerClientEvent('QBCore:Notify', src, 'Getting Stressed', 'error', 1500)
+        TriggerClientEvent('QBCore:Notify', src, 'Stress Ökad', 'error', 1500)
 	end
 end)
 
@@ -91,8 +91,14 @@ AddEventHandler('qb-hud:Server:RelieveStress', function(amount)
         if newStress > 100 then
             newStress = 100
         end
+
+if newStress > 70 then 
+	     TriggerClientEvent("hud:client:shake", src)
+	end 
+
         Player.Functions.SetMetaData("stress", newStress)
-        TriggerClientEvent('QBCore:Notify', src, 'You Are Relaxing')
+        TriggerClientEvent("hud:client:UpdateStress", src, newStress)
+        --TriggerClientEvent('QBCore:Notify', src, 'Stress Sjunker')
 	end
 end)
 

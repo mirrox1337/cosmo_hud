@@ -12,7 +12,9 @@ files {
     'html/loading-bar.js',
     'html/nitrous.png',
     'html/buckle.ogg',
-    'html/unbuckle.ogg'
+    'html/unbuckle.ogg',
+    'html/seatBelt_on.png',
+    'html/seatBelt_off.png'
 }
 
 
