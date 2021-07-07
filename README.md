@@ -12,12 +12,12 @@ Do not change the name or it will not work.
 
 ## Requirements
 
-QBCore
-pma-voice
+QBCore,
+pma-voice,
 rp-radio (optional)
 
 ## Thanks to
-https://github.com/GhzGarage/
+https://github.com/GhzGarage/.
 https://loading.io/progress/ for the loading-Bar library.
 
 ## License
