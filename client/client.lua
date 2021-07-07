@@ -1,5 +1,5 @@
 local isDriving = false
-local isLoggedIn = true
+local isLoggedIn = false
 local nitrous = 0
 local hasNitrous = false
 local Stress = 0
