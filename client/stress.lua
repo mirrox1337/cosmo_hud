@@ -17,7 +17,7 @@ Citizen.CreateThread(function()
         if QBCore ~= nil and isLoggedIn then
             local ped = PlayerPedId()
             if IsPedInAnyVehicle(ped, false) then
-                speed = GetEntitySpeed(GetVehiclePedIsIn(ped, false)) * 2.237 --mph
+                speed = GetEntitySpeed(GetVehiclePedIsIn(ped, false)) * 3.6 --mph
                 if speed >= Config.MinimumSpeed then
                     TriggerServerEvent('cosmo_hud:Server:GainStress', math.random(2, 4))
                 end
