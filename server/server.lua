@@ -69,7 +69,7 @@ AddEventHandler('cosmo_hud:Server:GainStress', function(amount)
             newStress = 100
         end
         Player.Functions.SetMetaData("stress", newStress)
-        TriggerClientEvent('QBCore:Notify', src, 'Stress Ökad', 'error', 1500)
+        TriggerClientEvent('QBCore:Notify', src, 'Getting Stressed', 'error', 1500)
 	end
 end)
 

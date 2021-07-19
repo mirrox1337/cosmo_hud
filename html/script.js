@@ -115,13 +115,13 @@ window.addEventListener("message", function (event) {
   // Get current voice level and animate path
   if (data.action == "voice_level") {
     switch (data.voicelevel) {
-      case 1:
+      case 1.0:
         data.voicelevel = 33;
         break;
-      case 2:
+      case 2.3:
         data.voicelevel = 66;
         break;
-      case 5:
+      case 5.0:
         data.voicelevel = 100;
         break;
       default:
@@ -233,16 +233,16 @@ window.addEventListener("message", function (event) {
 
 
   if (data.action == "update_fuel") {
-    let finalfuel = (data.fuel / 100) * 1.5385;
-    if (finalfuel > 0.9) {
-      FuelIndicator.animate(1.0);
-    } else if (finalfuel < 0.9) {
-      FuelIndicator.animate(finalfuel);
+    let fuel = data.fuel;
+    if (fuel > 97) {
+      FuelIndicator.animate(100 / 100);
+    } else if (fuel < 97) {
+      FuelIndicator.animate(fuel / 100);
     }
-    if (finalfuel < 0.2) {
+    if (fuel < 17) {
       FuelIndicator.path.setAttribute("stroke", "red");
       $("#FuelCircle").toggleClass("flash");
-    } else if (finalfuel > 0.2) {
+    } else if (fuel > 17) {
       FuelIndicator.path.setAttribute("stroke", "white");
     }
   }

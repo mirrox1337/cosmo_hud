@@ -15,36 +15,36 @@ Config.MinimumSpeed = 160 -- Change minimum speed that causes stress
 Config.Intensity = { -- Change Screen Shake Intensity Relative To Stress Amount
     ["shake"] = {
         [1] = {
-            min = 50,
-            max = 60,
+            min = 20,
+            max = 40,
             intensity = 0.12,
         },
         [2] = {
-            min = 60,
-            max = 70,
+            min = 40,
+            max = 60,
             intensity = 0.17,
         },
         [3] = {
-            min = 70,
+            min = 60,
             max = 80,
-            intensity = 0.22,
+            intensity = 0.20,
         },
         [4] = {
             min = 80,
             max = 90,
-            intensity = 0.28,
+            intensity = 0.40,
         },
         [5] = {
             min = 90,
             max = 100,
-            intensity = 0.32,
+            intensity = 0.60,
         },
     }
 }
 
 Config.EffectInterval = { -- Change How Often Screen Shake Happens
     [1] = {
-        min = 50,
+        min = 20,
         max = 60,
         timeout = math.random(50000, 60000)
     },
@@ -77,12 +77,12 @@ Config.EffectInterval = { -- Change How Often Screen Shake Happens
 --      MPH -> Vel = (MPH / 2.236936)
 --      KPH -> Vel = (KPH / 3.6)
 --  Default: (60 / 2.236936)
-Config.ejectVelocity = (60 / 2.236936)
+Config.ejectVelocity = (40 / 2.236936)
 
 -- unknownEjectVelocity - This value should be equal or greater than the value of ejectVelocity
 --      The purpose of this variable is confusing https://docs.fivem.net/natives/?_0x4D3118ED
 --  Default: (70 / 2.236936)
-Config.unknownEjectVelocity = (70 / 2.236936)
+Config.unknownEjectVelocity = (40 / 2.236936)
 
 -- unknownModifier - Don't know the purpose of this value, probably best to leave as is
 Config.unknownModifier = 17.0 --  Default: 17.0

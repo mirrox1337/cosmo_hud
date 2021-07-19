@@ -1,4 +1,4 @@
-
+SetFlyThroughWindscreenParams(Config.ejectVelocity, Config.unknownEjectVelocity, Config.unknownModifier, Config.minDamage);
 local seatbeltOn = false
 
 Citizen.CreateThread(function()
@@ -26,7 +26,7 @@ end)
 function toggleSeatbelt(makeSound, toggle)
     if toggle == nil then
         if seatbeltOn then
-            TriggerServerEvent("InteractSound_SV:PlayOnSource", "unbuckle", 0.25)
+            playSound("unbuckle")
             QBCore.Functions.Progressbar("harness_equip", "Removes the Seatbelt..", 1500, false, true, {
                 disableMovement = false,
                 disableCarMovement = true,
@@ -35,7 +35,7 @@ function toggleSeatbelt(makeSound, toggle)
             }, {}, {}, {}, function()end)
             SetFlyThroughWindscreenParams(Config.ejectVelocity, Config.unknownEjectVelocity, Config.unknownModifier, Config.minDamage)
         else
-            TriggerServerEvent("InteractSound_SV:PlayOnSource", "buckle", 0.25)
+            playSound("buckle")
             QBCore.Functions.Progressbar("harness_equip", "Putting on Seatbelt..", 1500, false, true, {
                 disableMovement = false,
                 disableCarMovement = true,
@@ -47,7 +47,7 @@ function toggleSeatbelt(makeSound, toggle)
         seatbeltOn = not seatbeltOn
     else
         if toggle then
-            TriggerServerEvent("InteractSound_SV:PlayOnSource", "buckle", 0.25)
+            playSound("buckle")
             QBCore.Functions.Progressbar("harness_equip", "Putting on Seatbelt..", 1500, false, true, {
                 disableMovement = false,
                 disableCarMovement = true,
@@ -56,7 +56,7 @@ function toggleSeatbelt(makeSound, toggle)
             }, {}, {}, {}, function()end)
             SetFlyThroughWindscreenParams(10000.0, 10000.0, 17.0, 500.0);
         else
-            TriggerServerEvent("InteractSound_SV:PlayOnSource", "unbuckle", 0.25)
+            playSound("unbuckle")
             QBCore.Functions.Progressbar("harness_equip", "Removes the Seatbelt..", 1500, false, true, {
                 disableMovement = false,
                 disableCarMovement = true,
@@ -81,7 +81,7 @@ function playSound(action)
                     table.insert(passengers, ped)
                 end
             end
-            TriggerServerEvent('seatbelt:server:PlaySound', action, json.encode(passengers))
+            TriggerServerEvent('InteractSound_SV:PlayOnSource', action, json.encode(passengers))
         else
             SendNUIMessage({type = action, volume = Config.volume})
         end
@@ -97,7 +97,10 @@ RegisterCommand('toggleseatbelt', function(source, args, rawCommand)
     end
 end, false)
 
-
+RegisterNetEvent('seatbelt:client:PlaySound')
+AddEventHandler('seatbelt:client:PlaySound', function(action, volume)
+    SendNUIMessage({type = action, volume = volume})
+end)
 
 exports("status", function() return seatbeltOn end)
 

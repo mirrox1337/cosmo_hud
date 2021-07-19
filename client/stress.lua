@@ -32,7 +32,7 @@ Citizen.CreateThread(function()
         if not IsGaining then
             StressGain = math.ceil(StressGain)
             if StressGain > 0 then
-               -- QBCore.Functions.Notify('Stress Ökad', "error", 2000)
+                QBCore.Functions.Notify('Getting Stressed', "error", 1500)
                 TriggerServerEvent('cosmo_hud:Server:UpdateStress', StressGain)
                 StressGain = 0
             end
@@ -50,7 +50,7 @@ Citizen.CreateThread(function()
             local StressChance = math.random(1, 40)
             local odd = math.random(1, 40)
             if StressChance == odd then
-                local PlusStress = math.random(1, 3) / 100
+                local PlusStress = math.random(1, 5) / 100
                 StressGain = StressGain + PlusStress
             end
             if not IsGaining then
