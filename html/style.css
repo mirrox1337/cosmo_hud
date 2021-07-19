@@ -68,6 +68,22 @@ body {
   bottom: 1.25vh;
 }
 
+.fa-eye-dropper {
+  color: white;
+  position: absolute;
+  font-size: 1.3vh;
+  left: 0.8vh;
+  bottom: 0.85vh;
+}
+
+.fa-tachometer-alt{
+  color: white;
+  position: absolute;
+  font-size: 1.6vh;
+  left: 1.4vh;
+  bottom: 1.25vh;
+}
+
 #SpeedCircle {
   width: 5vh !important;
   height: 5vh !important;

@@ -125,7 +125,7 @@ window.addEventListener("message", function (event) {
         data.voicelevel = 100;
         break;
       default:
-        data.voicelevel = 33;
+        data.voicelevel = 66;
         break;
     }
     VoiceIndicator.animate(data.voicelevel / 100);
@@ -191,11 +191,23 @@ window.addEventListener("message", function (event) {
 
   // Flash if thirst is low
   if (data.thirst < 25) {
-    $("#ThirstIcon").toggleClass("flash");
+    $("#ThirstIndicator").toggleClass("flash");
   }
   // Flash if hunger is low
   if (data.hunger < 25) {
-    $("#HungerIcon").toggleClass("flash");
+    $("#HungerIndicator").toggleClass("flash");
+  }
+  // Flash if Oxygen is low
+  if (data.oxygen < 25) {
+    $("#OxygenIndicator").toggleClass("flash");
+  }
+  // Flash if health is low
+  if (data.hp < 25) {
+    $("#HealthIndicator").toggleClass("flash");
+  }
+  // Flash if stress is high
+  if (data.stress > 75) {
+    $("#StressIndicator").toggleClass("flash");
   }
 
   if (data.rpm > 0) {
@@ -229,6 +241,7 @@ window.addEventListener("message", function (event) {
     }
     if (finalfuel < 0.2) {
       FuelIndicator.path.setAttribute("stroke", "red");
+      $("#FuelCircle").toggleClass("flash");
     } else if (finalfuel > 0.2) {
       FuelIndicator.path.setAttribute("stroke", "white");
     }
@@ -244,6 +257,7 @@ window.addEventListener("message", function (event) {
       NitrousIndicator.animate(0);
     } if (data.nitrous < 20) {
       NitrousIndicator.path.setAttribute("stroke", "red");
+      $("#NitrousCircle").toggleClass("flash");
     } else {
       NitrousIndicator.path.setAttribute("stroke", "white");
     }
@@ -268,10 +282,12 @@ window.addEventListener("message", function (event) {
   }
 
   if (data.showBelt == true) {
-    $("#BeltCircle").fadeIn();
+    $("#BeltCircle").toggleClass("flash");
+    $("#BeltIcon").css("color", "red");
     BeltIndicator.trail.setAttribute("stroke", "red");
   } else if (data.showBelt == false) {
-    $("#BeltCircle").fadeOut();
+    BeltIndicator.trail.setAttribute("stroke", "#5feb46");
+    $("#BeltIcon").css("color", "#5feb46");
   }
 
   if (data.showUi == true) {
