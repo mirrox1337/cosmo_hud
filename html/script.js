@@ -2,8 +2,8 @@ $(document).ready(function () {
   HealthIndicator = new ProgressBar.Circle("#HealthIndicator", {
     color: "rgb(0, 182, 91)",
     trailColor: "green",
-    strokeWidth: 10,
-    trailWidth: 10,
+    strokeWidth: 6,
+    trailWidth: 6,
     duration: 250,
     easing: "easeInOut",
   });
@@ -11,8 +11,8 @@ $(document).ready(function () {
   ArmorIndicator = new ProgressBar.Circle("#ArmorIndicator", {
     color: "rgb(201, 36, 36)",
     trailColor: "rgb(124, 30, 30)",
-    strokeWidth: 10,
-    trailWidth: 10,
+    strokeWidth: 6,
+    trailWidth: 6,
     duration: 250,
     easing: "easeInOut",
   });
@@ -20,8 +20,8 @@ $(document).ready(function () {
   HungerIndicator = new ProgressBar.Circle("#HungerIndicator", {
     color: "rgb(255, 164, 59)",
     trailColor: "rgb(165, 116, 60)",
-    strokeWidth: 10,
-    trailWidth: 10,
+    strokeWidth: 6,
+    trailWidth: 6,
     duration: 250,
     easing: "easeInOut",
   });
@@ -29,8 +29,8 @@ $(document).ready(function () {
   ThirstIndicator = new ProgressBar.Circle("#ThirstIndicator", {
     color: "rgb(0, 140, 255)",
     trailColor: "rgb(0, 85, 155)",
-    strokeWidth: 10,
-    trailWidth: 10,
+    strokeWidth: 6,
+    trailWidth: 6,
     duration: 250,
     easing: "easeInOut",
   });
@@ -38,8 +38,8 @@ $(document).ready(function () {
   StressIndicator = new ProgressBar.Circle("#StressIndicator", {
     color: "rgb(255, 74, 104)",
     trailColor: "rgb(102, 27, 40)",
-    strokeWidth: 10,
-    trailWidth: 10,
+    strokeWidth: 6,
+    trailWidth: 6,
     duration: 250,
     easing: "easeInOut",
   });
@@ -55,45 +55,45 @@ $(document).ready(function () {
 
   Speedometer = new ProgressBar.Circle("#SpeedCircle", {
     color: "rgba(70, 104, 135, 1)",
-    trailColor: "#404b58",
-    strokeWidth: 8,
+    trailColor: "rgb(50, 50, 50)",
+    strokeWidth: 6,
     duration: 100,
-    trailWidth: 8,
+    trailWidth: 6,
     easing: "easeInOut",
   });
 
   FuelIndicator = new ProgressBar.Circle("#FuelCircle", { 
     color: "rgba(70, 104, 135, 1)",
-    trailColor: "#404b58",
-    strokeWidth: 8,
+    trailColor: "rgb(50, 50, 50)",
+    strokeWidth: 6,
     duration: 2000,
-    trailWidth: 8,
+    trailWidth: 6,
     easing: "easeInOut",
   });
 
   NitrousIndicator = new ProgressBar.Circle("#NitrousCircle", { 
     color: "rgba(70, 104, 135, 1)",
-    trailColor: "#404b58",
-    strokeWidth: 8,
+    trailColor: "rgb(50, 50, 50)",
+    strokeWidth: 6,
     duration: 2000,
-    trailWidth: 8,
+    trailWidth: 6,
     easing: "easeInOut",
   });
 
   BeltIndicator = new ProgressBar.Circle("#BeltCircle", { 
     color: "rgba(70, 104, 135, 1)",
-    trailColor: "#404b58",
-    strokeWidth: 8,
+    trailColor: "rgb(50, 50, 50)",
+    strokeWidth: 6,
     duration: 2000,
-    trailWidth: 8,
+    trailWidth: 6,
     easing: "easeInOut",
   });
 
   VoiceIndicator = new ProgressBar.Circle("#VoiceIndicator", {
     color: "#4a4a4a",
-    trailColor: "#4a4a4a",
-    strokeWidth: 10,
-    trailWidth: 10,
+    trailColor: "rgb(50, 50, 50)",
+    strokeWidth: 6,
+    trailWidth: 6,
     duration: 250,
     easing: "easeInOut",
   });
@@ -282,7 +282,7 @@ window.addEventListener("message", function (event) {
   }
 
   if (data.showBelt == true) {
-    $("#BeltCircle").toggleClass("flash");
+    $("#BeltIcon").toggleClass("flash");
     $("#BeltIcon").css("color", "red");
     BeltIndicator.trail.setAttribute("stroke", "red");
   } else if (data.showBelt == false) {

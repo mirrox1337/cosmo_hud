@@ -22,12 +22,30 @@ body {
   float: left;
   margin: 0.3vh;
   border-radius: 50%;
-  background: #181E25;
+  background: rgba(0, 0, 0, 0.9);
 }
 
-.fa-heart,
-.fa-shield-alt,
-.fa-hamburger,
+.fa-heartbeat{
+  color: rgb(0, 182, 91);
+  position: absolute;
+  font-size: 1.8vh;
+  left: 1.15vh;
+  bottom: 1.05vh;
+}
+.fa-shield-alt{
+  color: rgb(201, 36, 36);
+  position: absolute;
+  font-size: 1.6vh;
+  left: 1.2vh;
+  bottom: 1.2vh;
+}
+.fa-utensils{
+  color: rgb(255, 164, 59);
+  position: absolute;
+  font-size: 1.6vh;
+  left: 1.3vh;
+  bottom: 1.15vh;
+}
 .fa-skull {
   color: white;
   position: absolute;
@@ -36,7 +54,15 @@ body {
   bottom: 1.2vh;
 }
 
-.fa-brain, .fa-headset  {
+.fa-brain {
+  color: rgb(255, 74, 104);
+  position: absolute;
+  font-size: 1.6vh;
+  left: 1.1vh;
+  bottom: 1.2vh;
+}
+
+.fa-headset  {
   color: white;
   position: absolute;
   font-size: 1.6vh;
@@ -53,10 +79,10 @@ body {
 }
 
 .fa-tint {
-  color: white;
+  color: rgb(0, 140, 255);
   position: absolute;
   font-size: 1.6vh;
-  left: 1.5vh;
+  left: 1.45vh;
   bottom: 1.2vh;
 }
 
@@ -64,8 +90,8 @@ body {
   color: white;
   position: absolute;
   font-size: 1.6vh;
-  left: 1.4vh;
-  bottom: 1.25vh;
+  left: 1.45vh;
+  bottom: 1.2vh;
 }
 
 .fa-eye-dropper {
@@ -91,7 +117,7 @@ body {
   font-size: 5vh;
   left: 22.8vh;
   bottom: 5.6vh;
-  background: rgba(24, 30, 37, 1.0);
+  background: rgba(0, 0, 0, 0.8);
   transform: rotate(-180deg);
 }
 
@@ -113,7 +139,7 @@ body {
   position: absolute;
   left: 20.4vh;
   bottom: 4.2vh;
-  background: rgba(24, 30, 37, 1.0);
+  background: rgba(0, 0, 0, 0.8);
   transform: rotate(-180deg);
 }
 #NitrousCircle {
@@ -122,7 +148,7 @@ body {
   position: absolute;
   left: 27.2vh;
   bottom: 4.2vh;
-  background: rgba(24, 30, 37, 1.0);
+  background: rgba(0, 0, 0, 0.8);
   transform: rotate(-180deg);
 }
 
@@ -132,7 +158,7 @@ body {
   position: absolute;
   left: 24.4vh;
   bottom: 11vh;
-  background: rgba(24, 30, 37, 1.0);
+  background: rgba(0, 0, 0, 0.8);
   transform: rotate(-180deg);
 }
 
