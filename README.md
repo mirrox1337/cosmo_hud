@@ -28,3 +28,4 @@ https://www.twitch.tv/mirroxtv
 
 ## Screenshot
 ![alt text](https://i.imgur.com/JW5lLyL.png)
+![alt text](https://i.imgur.com/lHR6mtY.png)
