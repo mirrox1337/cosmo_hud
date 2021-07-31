@@ -27,4 +27,4 @@ https://loading.io/progress/ for the loading-Bar library.
 https://www.twitch.tv/mirroxtv
 
 ## Screenshot
-![alt text](https://i.imgur.com/lHR6mtY.png)
+![alt text](https://i.imgur.com/9C2hWgl.png)
