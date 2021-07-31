@@ -44,14 +44,14 @@ $(document).ready(function () {
     easing: "easeInOut",
   });
 
-  OxygenIndicator = new ProgressBar.Circle("#OxygenIndicator", {
-    color: "rgb(0, 140, 255)",
-    trailColor: "rgb(0, 85, 155)",
-    strokeWidth: 10,
-    trailWidth: 10,
-    duration: 250,
-    easing: "easeInOut",
-  });
+//  OxygenIndicator = new ProgressBar.Circle("#OxygenIndicator", {
+//    color: "rgb(0, 140, 255)",
+//    trailColor: "rgb(0, 85, 155)",
+//    strokeWidth: 10,
+//    trailWidth: 10,
+//    duration: 250,
+//    easing: "easeInOut",
+//  });
 
   Speedometer = new ProgressBar.Circle("#SpeedCircle", {
     color: "rgba(70, 104, 135, 1)",
@@ -89,6 +89,15 @@ $(document).ready(function () {
     easing: "easeInOut",
   });
 
+  CruiseIndicator = new ProgressBar.Circle("#CruiseCircle", { 
+    color: "rgba(70, 104, 135, 1)",
+    trailColor: "rgb(50, 50, 50)",
+    strokeWidth: 6,
+    duration: 2000,
+    trailWidth: 6,
+    easing: "easeInOut",
+  });
+
   VoiceIndicator = new ProgressBar.Circle("#VoiceIndicator", {
     color: "#4a4a4a",
     trailColor: "rgb(50, 50, 50)",
@@ -109,7 +118,7 @@ window.addEventListener("message", function (event) {
     HungerIndicator.animate(data.hunger / 100);
     ThirstIndicator.animate(data.thirst / 100);
     StressIndicator.animate(data.stress / 100);
-    OxygenIndicator.animate(data.oxygen / 100);
+    //OxygenIndicator.animate(data.oxygen / 100);
   }
 
   // Get current voice level and animate path
@@ -158,11 +167,11 @@ window.addEventListener("message", function (event) {
   }
 
   // Show oxygen if underwater
-  if (data.showOxygen == true) {
-    $("#OxygenIndicator").show();
-  } else if (data.showOxygen == false) {
-    $("#OxygenIndicator").hide();
-  }
+//  if (data.showOxygen == true) {
+//    $("#OxygenIndicator").show();
+//  } else if (data.showOxygen == false) {
+//    $("#OxygenIndicator").hide();
+//  }
 
   // Hide armor if 0
   if (data.armor == 0) {
@@ -198,9 +207,9 @@ window.addEventListener("message", function (event) {
     $("#HungerIndicator").toggleClass("flash");
   }
   // Flash if Oxygen is low
-  if (data.oxygen < 25) {
-    $("#OxygenIndicator").toggleClass("flash");
-  }
+//  if (data.oxygen < 25) {
+//    $("#OxygenIndicator").toggleClass("flash");
+//  }
   // Flash if health is low
   if (data.hp < 25) {
     $("#HealthIndicator").toggleClass("flash");
@@ -284,10 +293,16 @@ window.addEventListener("message", function (event) {
   if (data.showBelt == true) {
     $("#BeltIcon").toggleClass("flash");
     $("#BeltIcon").css("color", "red");
-    BeltIndicator.trail.setAttribute("stroke", "red");
+    BeltIndicator.trail.setAttribute("stroke", "transparant");
   } else if (data.showBelt == false) {
-    BeltIndicator.trail.setAttribute("stroke", "#5feb46");
     $("#BeltIcon").css("color", "#5feb46");
+  }
+
+  if (data.showCruise == true) {
+    $("#CruiseIcon").css("color", "red");
+    CruiseIndicator.trail.setAttribute("stroke", "transparant");
+  } else if (data.showCruise == false) {
+    $("#CruiseIcon").css("color", "#5feb46");
   }
 
   if (data.showUi == true) {

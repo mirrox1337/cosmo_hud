@@ -105,9 +105,9 @@ body {
 .fa-tachometer-alt{
   color: white;
   position: absolute;
-  font-size: 1.6vh;
-  left: 1.4vh;
-  bottom: 1.25vh;
+  font-size: 1.3vh;
+  left: 0.8vh;
+  bottom: 0.85vh;
 }
 
 #SpeedCircle {
@@ -156,9 +156,19 @@ body {
   width: 3vh !important;
   height: 3vh !important;
   position: absolute;
-  left: 24.4vh;
+  left: 24.2vh;
   bottom: 11vh;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.0);
+  transform: rotate(-180deg);
+}
+
+#CruiseCircle {
+  width: 3vh !important;
+  height: 3vh !important;
+  position: absolute;
+  left: 26.2vh;
+  bottom: 11vh;
+  background: rgba(0, 0, 0, 0.0);
   transform: rotate(-180deg);
 }
 
@@ -172,12 +182,22 @@ body {
   transform: rotate(-180deg);
 }
 
-.belt {
+.fa-eye-dropper {
   color: white;
   left: 0.6vh;
-  bottom: 0.7vh;
+  bottom: 0.85vh;
   height: 22px;
   width: 22px;
+  position: inherit;
+  transform: rotate(-180deg);
+}
+
+.fa-tachometer-alt {
+  color: white;
+  left: 0.95vh;
+  bottom: 0.85vh;
+  height: 18px;
+  width: 18px;
   position: inherit;
   transform: rotate(-180deg);
 }
