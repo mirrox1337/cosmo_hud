@@ -1,6 +1,6 @@
 # Cosmo HUD
 
-Edited version of cosmo hud with belt
+Edited version of cosmo hud with belt and cruisecontrol
 
 ## Installation
 
@@ -15,6 +15,7 @@ Do not change the name or it will not work.
 QBCore,
 pma-voice,
 rp-radio (optional)
+onesync infinity
 
 ## Thanks to
 https://github.com/GhzGarage/.
