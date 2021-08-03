@@ -4,9 +4,19 @@ local Cruise = false
 
 Citizen.CreateThread(function ()
   while true do
-    Wait(0)
+    Wait(10)
+    if IsControlJustPressed(1, 246) and IsDriver() then-- Cruise
+      Player = PlayerPedId()
+      TriggerCruiseControl()
+    end
+  end
+end)
+
+Citizen.CreateThread(function ()
+  while true do
+    Wait(1000)
     if Config.showCruise == true then
-      if Cruise then
+      if Cruise == true then
           SendNUIMessage({showCruise = false})
       else
           SendNUIMessage({showCruise = true})
@@ -14,11 +24,7 @@ Citizen.CreateThread(function ()
   elseif Config.showCruise == false then
       SendNUIMessage({showCruise = false})
   end
-    if IsControlJustPressed(1, 246) and IsDriver() then-- Cruise
-      Player = PlayerPedId()
-      TriggerCruiseControl()
-    end
-  end
+end
 end)
 
 function TriggerCruiseControl ()
