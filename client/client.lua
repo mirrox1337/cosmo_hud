@@ -236,25 +236,3 @@ end)
 RegisterCommand("togglehud",
     function()  SendNUIMessage({action = "toggle_hud"})
 end, false)
-
-playerAiming = false
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(200)
-		local ped = PlayerPedId()
-        if IsAimCamActive(PlayerPedId(), true) then
-			if playerAiming == false then
-            ShakeGameplayCam("HAND_SHAKE", 1.0 + Stress * 0.01)
-			SetPedAccuracy(ped, 0)
-			EnableLaserSightRendering(true)
-			playerAiming = true
-		end
-        else
-			if playerAiming == true then
-            StopGameplayCamShaking(true)
-			playerAiming = false
-			end
-        end
-    end
-end)
