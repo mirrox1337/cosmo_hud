@@ -5,6 +5,7 @@ local hasNitrous = false
 local Stress = 0
 local hunger = nil
 local thirst = nil
+local oxygen = 0
 local seatbeltOn = false
 
 QBCore = nil

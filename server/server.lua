@@ -98,7 +98,7 @@ if newStress > 70 then
 
         Player.Functions.SetMetaData("stress", newStress)
         TriggerClientEvent("hud:client:UpdateStress", src, newStress)
-        --TriggerClientEvent('QBCore:Notify', src, 'Stress Sjunker')
+        TriggerClientEvent('QBCore:Notify', src, 'You Are Relaxing')
 	end
 end)
 
