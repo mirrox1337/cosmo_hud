@@ -1,6 +1,3 @@
-QBCore = nil
-TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
-
 -- Money
 
 QBCore.Commands.Add("cash", "Check your cash balance", {}, false, function(source, args)

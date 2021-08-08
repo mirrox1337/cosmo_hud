@@ -16,16 +16,16 @@ files {
     'html/seatBelt_off.png'
 }
 
+shared_scripts {
+    '@qb-core/import.lua',
+    'config.lua'
+}
 
 client_scripts {
-    'config.lua',
     'client/client.lua',
     'client/stress.lua',
     'client/cruisecontrol.lua',
     'client/seatbelt.lua'
 }
 
-server_scripts {
-    'config.lua',
-    'server/server.lua'
-}
+server_script 'server/server.lua'
