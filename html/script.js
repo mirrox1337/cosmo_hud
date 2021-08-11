@@ -47,8 +47,8 @@ $(document).ready(function () {
   OxygenIndicator = new ProgressBar.Circle("#OxygenIndicator", {
     color: "rgb(0, 140, 255)",
     trailColor: "rgb(0, 85, 155)",
-    strokeWidth: 10,
-    trailWidth: 10,
+    strokeWidth: 6,
+    trailWidth: 6,
     duration: 250,
     easing: "easeInOut",
   });
@@ -57,8 +57,8 @@ $(document).ready(function () {
     color: "rgba(70, 104, 135, 1)",
     trailColor: "rgb(50, 50, 50)",
     strokeWidth: 6,
-    duration: 100,
     trailWidth: 6,
+    duration: 100,
     easing: "easeInOut",
   });
 
@@ -66,8 +66,8 @@ $(document).ready(function () {
     color: "rgba(70, 104, 135, 1)",
     trailColor: "rgb(50, 50, 50)",
     strokeWidth: 6,
-    duration: 2000,
     trailWidth: 6,
+    duration: 2000,
     easing: "easeInOut",
   });
 
@@ -75,8 +75,8 @@ $(document).ready(function () {
     color: "rgba(70, 104, 135, 1)",
     trailColor: "rgb(50, 50, 50)",
     strokeWidth: 6,
-    duration: 2000,
     trailWidth: 6,
+    duration: 2000,
     easing: "easeInOut",
   });
 
@@ -84,8 +84,8 @@ $(document).ready(function () {
     color: "rgba(70, 104, 135, 1)",
     trailColor: "rgb(50, 50, 50)",
     strokeWidth: 6,
-    duration: 2000,
     trailWidth: 6,
+    duration: 2000,
     easing: "easeInOut",
   });
 
@@ -93,8 +93,8 @@ $(document).ready(function () {
     color: "rgba(70, 104, 135, 1)",
     trailColor: "rgb(50, 50, 50)",
     strokeWidth: 6,
-    duration: 2000,
     trailWidth: 6,
+    duration: 2000,
     easing: "easeInOut",
   });
 
