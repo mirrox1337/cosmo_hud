@@ -16,7 +16,7 @@ Simple status HUD for FiveM and ESX inspired by NoPixel 3.0.
 
 - pma-voice
 
-- rp-radio (optional)
+- qb-radio (optional)
 
 - onesync infinity
 
