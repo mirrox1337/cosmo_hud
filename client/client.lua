@@ -102,7 +102,7 @@ Citizen.CreateThread(function()
 
                 -- Radio
                 if Config.UseRadio then
-                    local radioStatus = exports["rp-radio"]:IsRadioOn()
+                    local radioStatus = exports["qb-radio"]:IsRadioOn()
                     SendNUIMessage({radio = radioStatus})
                 end
 
